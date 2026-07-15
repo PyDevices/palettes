@@ -26,7 +26,7 @@ Add to the example header:
 
 ```python
 # pyscript mip: palettes
-# pyodide wheels: palettes
+# pyodide wheels: pydevices-palettes
 ```
 
 The pydisplay gallery generator adds these when examples import `palettes`.

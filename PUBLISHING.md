@@ -1,6 +1,6 @@
 # Publishing and releases
 
-How changes in this repo become versioned **`palettes`** wheels on [TestPyPI](https://test.pypi.org/project/palettes/) and MIP packages on [micropython-lib gh-pages](https://PyDevices.github.io/micropython-lib/mip/PyDevices).
+How changes in this repo become versioned **`pydevices-palettes`** wheels on [TestPyPI](https://test.pypi.org/project/pydevices-palettes/) and MIP packages on [micropython-lib gh-pages](https://PyDevices.github.io/micropython-lib/mip/PyDevices).
 
 ## Pipeline
 
@@ -33,7 +33,7 @@ Format: **`0.0.x`** semver until promoted. TestPyPI rejects duplicate versions.
 ## Install from TestPyPI
 
 ```bash
-pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ palettes
+pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ pydevices-palettes
 ```
 
 ## MIP install

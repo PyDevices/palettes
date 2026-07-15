@@ -87,6 +87,7 @@ DESCRIPTION_PREFIX="palettes"
 AUTHOR="Brad Barnett <contact@pydevices.com>"
 LICENSE="MIT"
 BASENAME=palettes
+PYPI_NAME=pydevices-palettes
 DEST_REPO="${MICROPYTHON_LIB_DIR:-$SOURCE_REPO/../micropython-lib}"
 DEST_REPO="$(cd "$DEST_REPO" 2>/dev/null && pwd || echo "$DEST_REPO")"
 export MICROPYTHON_LIB_DIR="$DEST_REPO"
@@ -127,7 +128,7 @@ metadata(
     version="$VERSION",
     author="$AUTHOR",
     license="$LICENSE",
-    pypi_publish="$BASENAME",
+    pypi_publish="$PYPI_NAME",
 )
 package("$BASENAME")
 EOF
