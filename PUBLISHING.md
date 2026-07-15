@@ -6,7 +6,7 @@ How changes in this repo become versioned **`palettes`** wheels on [TestPyPI](ht
 
 ```text
 palettes (commit on main)
-  ./scripts/publish_release_tag.sh 0.0.1 --push
+  ./scripts/publish_release_tag.sh X.Y.Z --push
            │
            ▼
 publish-micropython-lib.yml
@@ -17,11 +17,15 @@ publish-micropython-lib.yml
 
 ## Version numbers
 
-Format: **`0.0.x`** semver until promoted. TestPyPI rejects duplicate versions.
+Format: **`0.0.x`** semver until promoted. TestPyPI rejects duplicate versions and
+rejects filenames that were previously uploaded then deleted (even under a
+different project name).
 
 ```bash
-./scripts/publish_release_tag.sh 0.0.1 --push
+./scripts/publish_release_tag.sh X.Y.Z --push
 ```
+
+Current release: **`palettes` 0.0.3** on [TestPyPI](https://test.pypi.org/project/palettes/0.0.3/).
 
 ## Secrets (repository or org)
 
