@@ -12,7 +12,7 @@ PATs that push workflow YAML need the **`workflow`** scope.
 | # | Task | Status |
 |---|------|--------|
 | 1 | Push workflow YAML to `.github/workflows/` | Done |
-| 2 | Publish v0.0.1 → micropython-lib + TestPyPI + MIP | **Pending** (tag push) |
+| 2 | Publish v0.0.3 → micropython-lib + TestPyPI + MIP | **Pending** (tag push) |
 | 3 | Read the Docs → `palettes.readthedocs.io` | **Pending** (admin) |
 | 4 | Enable GitHub Pages (`gh-pages` branch) | **Pending** (admin) |
 
