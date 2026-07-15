@@ -61,7 +61,8 @@ class MDPalette(MappedPalette):
         color_index = 0
         if len(FAMILIES) != len(LENGTHS):
             raise ValueError("FAMILIES and LENGTHS must have the same length")
-        for name, length in zip(FAMILIES, LENGTHS):
+        for i, name in enumerate(FAMILIES):
+            length = LENGTHS[i]
             if length == 1:  # black or white
                 setattr(self, name.upper(), self[color_index])
                 color_index += 1
