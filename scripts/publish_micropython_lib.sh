@@ -152,7 +152,7 @@ rsync -a --delete "${RSYNC_EXCLUDES[@]}" "$SOURCE_DIR/" "$DEST_DIR/$BASENAME/"
 
 cat <<EOF > "$DEST_DIR/manifest.py"
 metadata(
-    description="PyDisplay color palettes",
+    description="Color palette toolkit for pydisplay (wheel, cube, material_design)",
     version="$VERSION",
     author="$AUTHOR",
     license="$LICENSE",
