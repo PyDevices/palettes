@@ -19,6 +19,8 @@ Attributes:
         :class:`~palettes.wheel.WheelPalette`.
 """
 
+__all__ = ["WIN16", "get_palette", "Palette", "MappedPalette"]
+
 WIN16 = {
     0x000000: "Black",
     0x000080: "Navy",
@@ -85,6 +87,15 @@ class Palette:
     """
 
     def __init__(self, name="", color_depth=16, swapped=False, cached=False):
+        """Create a palette from the default Windows 16-color name table.
+
+        Args:
+            name: Optional label stored in :attr:`name`.
+            color_depth: Output format for :meth:`__getitem__`: ``4``, ``8``,
+                ``16``, or ``24``.
+            swapped: If ``True``, byte-swap 16-bit colors.
+            cached: If ``True``, memoize computed index colors.
+        """
         self._name = name
         self._color_depth = color_depth
         self._swapped = swapped
@@ -296,6 +307,14 @@ class MappedPalette(Palette):
     """
 
     def __init__(self, name, color_depth, swapped, color_map):
+        """Create a palette from a flat RGB byte map.
+
+        Args:
+            name: Optional label stored in :attr:`name`.
+            color_depth: Output format for :meth:`Palette.__getitem__`.
+            swapped: Byte-swap 16-bit colors when ``True``.
+            color_map: ``bytes`` or buffer of RGB triplets.
+        """
         self._color_map = color_map
         self._length = len(color_map) // 3
         super().__init__(name, color_depth, swapped)
