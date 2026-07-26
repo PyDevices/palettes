@@ -6,13 +6,13 @@ Color palette toolkit for pydisplay (`import palettes`).
 
 - Python venv at `.venv` — `.venv/bin/python`, `.venv/bin/ruff`
 - No runtime dependencies on other pydisplay packages
-- Source layout: `src/palettes/` (import name `palettes`)
+- Source layout: `lib/palettes/` (import name `palettes`)
 
 ## Tests and lint
 
 ```bash
 .venv/bin/python -m unittest discover -s tests
-.venv/bin/ruff check src tests scripts
+.venv/bin/ruff check lib tests scripts
 ```
 
 ## Publishing
@@ -24,9 +24,9 @@ See `PUBLISHING.md`.
 
 The Cloud Agent update script creates the repo-root `.venv` (with `ruff`). Since
 `palettes` is a source-only package (not pip-installed), the `unittest discover`
-command above needs `src/` on the path — the bare command fails with
-`ModuleNotFoundError: No module named 'palettes'`. Mirror CI (`env: PYTHONPATH: src`):
+command above needs `lib/` on the path — the bare command fails with
+`ModuleNotFoundError: No module named 'palettes'`. Mirror CI (`env: PYTHONPATH: lib`):
 
 ```bash
-PYTHONPATH=src .venv/bin/python -m unittest discover -s tests
+PYTHONPATH=lib .venv/bin/python -m unittest discover -s tests
 ```
