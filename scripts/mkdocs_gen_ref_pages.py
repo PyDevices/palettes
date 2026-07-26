@@ -1,4 +1,7 @@
-"""Generate mkdocstrings API reference stubs and navigation for palettes."""
+"""Generate mkdocstrings API reference stubs and navigation for palettes.
+
+Walks ``lib/palettes/`` (package lives under ``lib/``, not ``src/``).
+"""
 
 from pathlib import Path
 
@@ -6,7 +9,7 @@ import mkdocs_gen_files
 
 nav = mkdocs_gen_files.Nav()
 root = Path(__file__).parent.parent
-src = root / "src"
+src = root / "lib"
 reference = Path("reference")
 
 for path in sorted((src / "palettes").rglob("*.py")):
