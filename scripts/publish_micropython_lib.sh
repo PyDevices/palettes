@@ -16,7 +16,7 @@ usage() {
     cat <<'EOF'
 Usage: ./scripts/publish_micropython_lib.sh [OPTION]
 
-Copy palettes src/ into micropython-lib, optionally upload TestPyPI wheels,
+Copy palettes lib/ into micropython-lib, optionally upload TestPyPI wheels,
 then commit (and optionally push) on the PyDevices branch.
 
 Options:
@@ -91,7 +91,7 @@ PYPI_NAME=palettes
 DEST_REPO="${MICROPYTHON_LIB_DIR:-$SOURCE_REPO/../micropython-lib}"
 DEST_REPO="$(cd "$DEST_REPO" 2>/dev/null && pwd || echo "$DEST_REPO")"
 export MICROPYTHON_LIB_DIR="$DEST_REPO"
-SOURCE_DIR=$SOURCE_REPO/src/palettes
+SOURCE_DIR=$SOURCE_REPO/lib/palettes
 DEST_DIR=$DEST_REPO/micropython/$BASENAME
 PYPI_DIR=$SOURCE_REPO/wheels
 README_FULL_PATH=$SOURCE_REPO/README.md
@@ -147,7 +147,7 @@ push_micropython_lib() {
 echo
 echo "Processing $BASENAME"
 mkdir -p "$DEST_DIR/$BASENAME"
-# --delete drops removed modules so the sync matches src/
+# --delete drops removed modules so the sync matches lib/
 rsync -a --delete "${RSYNC_EXCLUDES[@]}" "$SOURCE_DIR/" "$DEST_DIR/$BASENAME/"
 
 cat <<EOF > "$DEST_DIR/manifest.py"

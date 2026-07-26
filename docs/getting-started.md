@@ -9,7 +9,7 @@ import mip
 mip.install("palettes", index="https://PyDevices.github.io/micropython-lib/mip/PyDevices")
 ```
 
-Development clone — put `src/` on `PYTHONPATH` or copy `src/palettes/` to your device.
+Development clone — put `lib/` on `PYTHONPATH` or copy `lib/palettes/` to your device.
 
 ## Basic usage
 
