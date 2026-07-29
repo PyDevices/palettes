@@ -1,6 +1,7 @@
 # palettes
 
-Documentation for the **palettes** package — color palettes for pydisplay graphics and widgets.
+Documentation for the **palettes** package — a small color-palette toolkit for
+pydisplay graphics, widgets, and animated UI effects.
 
 ## Links
 

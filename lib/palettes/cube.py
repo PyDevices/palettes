@@ -20,6 +20,11 @@ from . import Palette as _Palette
 class CubePalette(_Palette):
     """Evenly spaced RGB cube palette.
 
+    This palette is useful when you want a finite, evenly distributed set of
+    colors rather than a continuous ramp. It is common for simple color pickers,
+    indicator sets, or status themes where a small number of distinct colors is
+    better than a smooth gradient.
+
     Indices traverse the cube in ``x``, then ``y``, then ``z`` order. Channel
     values are spaced from ``0`` to ``255`` inclusive.
 

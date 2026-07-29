@@ -3,9 +3,15 @@
 # SPDX-License-Identifier: MIT
 """Color palette toolkit for pydisplay.
 
-Provides named color sets, RGB/HSV wheels, RGB cubes, and Material Design
-swatches. Palettes map integer indices to display-ready color values at
-several bit depths (4, 8, 16, or 24).
+Use this package when a UI or graphics routine needs a predictable set of
+colors rather than hard-coded values. The public API is small: call
+:meth:`get_palette` to create a palette, then index it to get display-ready
+colors for fills, gradients, labels, progress bars, and other visual states.
+
+A common pattern is to create one palette per display or scene and reuse it
+across multiple draw calls. For example, a 16-bit RGB565 display will usually
+want ``color_depth=16`` and may also need ``swapped=True`` when the driver
+expects byte-swapped colors.
 
 Example:
     >>> from palettes import get_palette
@@ -44,18 +50,24 @@ WIN16 = {
 def get_palette(name="default", **kwargs):
     """Construct a palette by logical name.
 
+    This is the easiest entry point for most applications. Select a palette
+    family once, then reuse the returned object as a color source across the
+    rest of the UI.
+
     Args:
         name: Palette type. One of ``"default"`` (Windows 16-color),
             ``"wheel"``, ``"cube"``, or ``"material_design"``. Unknown names
             fall back to :class:`Palette`.
         **kwargs: Forwarded to the palette constructor (for example
-            ``color_depth``, ``length``, ``size``, ``saturation``).
+            ``color_depth``, ``length``, ``size``, ``saturation``, and
+            ``swapped``).
 
     Returns:
         A :class:`Palette` subclass instance.
 
     Example:
-        >>> get_palette(name="cube", size=3, color_depth=16)
+        >>> pal = get_palette(name="cube", size=3, color_depth=16)
+        >>> color = pal[12]
     """
     if name == "wheel":
         from .wheel import WheelPalette as MyPalette
@@ -71,12 +83,14 @@ def get_palette(name="default", **kwargs):
 class Palette:
     """Indexed color palette with optional named color attributes.
 
-    Subclasses override :meth:`_get_rgb` to define how each index maps to
-    red, green, and blue components. :meth:`__getitem__` converts those
-    components to the configured ``color_depth``.
+    Subclasses override :meth:`_get_rgb` to define how each index maps to red,
+    green, and blue components. The resulting color can then be used for fills,
+    gradients, status indicators, and other display operations.
 
-    Named colors from the palette's name table (for example ``palette.RED``)
-    are attached as attributes during initialization.
+    In practice, applications usually create one palette for a screen or view and
+    then reuse it for many draw calls rather than generating colors inline. Named
+    colors from the palette's name table (for example ``palette.RED``) are
+    attached as attributes during initialization.
 
     Args:
         name: Optional label stored in :attr:`name`.

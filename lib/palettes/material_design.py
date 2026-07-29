@@ -23,6 +23,11 @@ from ._material_design import COLORS, FAMILIES, LENGTHS
 class MDPalette(MappedPalette):
     """Material Design swatch palette.
 
+    This palette is a good fit for UI theming and semantic color choices such as
+    surfaces, accents, success/error states, and status chips. The generated
+    named attributes make it easy to pick an icon, badge, or button color that
+    matches the Material Design system without manually looking up hex values.
+
     Colors are stored in a flat RGB map. During initialization, named
     attributes are created for each family and shade (for example
     ``RED``, ``RED_S500``, ``RED_A700``). The unsuffixed name always
