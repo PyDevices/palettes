@@ -1,7 +1,8 @@
 # palettes
 
-Documentation for the **palettes** package — a small color-palette toolkit for
-pydisplay graphics, widgets, and animated UI effects.
+Documentation for the **palettes** package — a pure-Python color-palette toolkit for
+pydisplay graphics, widgets, and animated UI effects. There is no native C extension;
+it is published to TestPyPI and micropython-lib / MIP.
 
 ## Links
 

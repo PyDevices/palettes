@@ -17,7 +17,7 @@ Color palette toolkit for pydisplay (`import palettes`).
 
 ## Publishing
 
-Tag `vX.Y.Z` triggers micropython-lib sync, MIP index rebuild, and TestPyPI upload.
+Tag `vX.Y.Z` triggers micropython-lib sync, MIP index rebuild, and TestPyPI upload for this Python-only package.
 See `docs/publishing.md`.
 
 ## Cursor Cloud specific instructions

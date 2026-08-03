@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Sync palettes into PyDevices/micropython-lib, build TestPyPI wheels, push MIP index.
+# Sync palettes into PyDevices/micropython-lib, build a pure-Python TestPyPI wheel,
+# and push the MIP index.
 #
 # CI: MICROPYTHON_LIB_DIR=../micropython-lib ./scripts/publish_micropython_lib.sh --push
 # MIP: mip.install("palettes", index="https://PyDevices.github.io/micropython-lib/mip/PyDevices")
