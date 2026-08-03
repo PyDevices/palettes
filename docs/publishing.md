@@ -1,6 +1,6 @@
 # Publishing and releases
 
-How changes in this repo become versioned **`palettes`** wheels on [TestPyPI](https://test.pypi.org/project/palettes/) and MIP packages on [micropython-lib gh-pages](https://PyDevices.github.io/micropython-lib/mip/PyDevices).
+How changes in this repo become versioned **`palettes`** CPython wheels on [TestPyPI](https://test.pypi.org/project/palettes/) and MicroPython packages on [micropython-lib gh-pages](https://PyDevices.github.io/micropython-lib/mip/PyDevices).
 
 ## Pipeline
 
