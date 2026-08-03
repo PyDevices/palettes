@@ -6,7 +6,7 @@ graduated backgrounds, progress bars, badges, and other UI states.
 
 ## Setup
 
-Install from [micropython-lib MIP](installation.md) or [TestPyPI](installation.md):
+Install from [micropython-lib MIP](installation.md) for MicroPython or [TestPyPI](installation.md) for CPython:
 
 ```python
 import mip
