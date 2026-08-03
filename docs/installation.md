@@ -13,7 +13,7 @@ Copy the `palettes/` package folder onto `sys.path`.
 
 ## CPython (TestPyPI)
 
-This package is published as a pure-Python wheel to TestPyPI.
+This package is published as a pure-Python CPython wheel to TestPyPI.
 
 ```bash
 pip install \
