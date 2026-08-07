@@ -5,7 +5,7 @@
   <script>try{if(localStorage.getItem('pydevices-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>palettes — PyDevices</title>
-  <meta name="description" content="Color palette toolkit for pydisplay — wheel, cube, material_design, and named colors on MicroPython and CPython.">
+  <meta name="description" content="Standalone color toolkit with no dependencies — wheel, cube, Material Design, and named colors for any host or user code.">
   <link rel="icon" type="image/svg+xml" href="https://pydevices.github.io/assets/img/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,14 +37,18 @@
   <div id="pydevices-site-header"></div>
 
   <section class="hero wrap">
-    <div class="logo-badge product-mark"><img src="img/product.svg" alt="palettes" width="112" height="112"></div>
-    <span class="eyebrow">PyDevices / palettes</span>
-    <h1>Color palettes for pydisplay.</h1>
-    <p>palettes is a small, portable color toolkit for pydisplay demos and apps. One entry point — <code>get_palette()</code> — gives you indexed wheels and cubes, Material Design swatches, and named colors without hard-coding hex in every example.</p>
-    <p>Install with MIP on MicroPython or a wheel from TestPyPI. The same <code>import palettes</code> path shows up in the browser gallery and on device firmware. <a href="https://pydevices.github.io/pdwidgets/">pdwidgets</a> builds its <code>ColorTheme</code> on the Material palette under the hood.</p>
+    <div class="hero-lead">
+      <div class="hero-brand">
+        <div class="logo-badge product-mark"><img src="img/product.svg" alt="palettes" width="112" height="112"></div>
+        <span class="eyebrow">PyDevices / palettes</span>
+      </div>
+      <h1>Color palettes for any Python code.</h1>
+    </div>
+    <p>palettes is a standalone color toolkit with <strong>no dependencies</strong> — usable with any user code on MicroPython, CircuitPython, or CPython. One entry point — <code>get_palette()</code> — gives you indexed wheels and cubes, Material Design swatches, and named colors without hard-coding hex everywhere.</p>
+    <p>Install with MIP on MicroPython or a wheel from TestPyPI. pydisplay demos and the browser gallery use it, and <a href="https://pydevices.github.io/pdwidgets/">pdwidgets</a> builds its <code>ColorTheme</code> on the Material palette under the hood — but nothing requires those packages.</p>
     <div class="cta">
       <a class="btn primary" href="https://palettes.readthedocs.io">Documentation</a>
-      <a class="btn" href="https://pydevices.github.io/pydisplay/pyscript/">PyScript demos</a>
+      <a class="btn" href="https://pydevices.github.io/pydisplay/pyscript/">PyScript Gallery</a>
       <a class="btn" href="https://github.com/PyDevices/palettes">GitHub</a>
     </div>
   </section>
