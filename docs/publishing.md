@@ -1,6 +1,6 @@
 # Publishing and releases
 
-How changes in this repo become versioned **`palettes`** CPython wheels on [TestPyPI](https://test.pypi.org/project/palettes/) and MicroPython packages on [micropython-lib gh-pages](https://PyDevices.github.io/micropython-lib/mip/PyDevices).
+How changes in this repo become versioned **`pydevices-palettes`** CPython wheels on [TestPyPI](https://test.pypi.org/project/pydevices-palettes/) and unprefixed **`palettes`** MicroPython packages on [micropython-lib gh-pages](https://PyDevices.github.io/micropython-lib/mip/PyDevices).
 
 ## Pipeline
 
@@ -25,7 +25,7 @@ different project name).
 ./scripts/publish_release_tag.sh X.Y.Z --push
 ```
 
-Current release: **`palettes` 0.0.3** on [TestPyPI](https://test.pypi.org/project/palettes/0.0.3/).
+The TestPyPI distribution is **`pydevices-palettes`**. Its import and MIP package remain **`palettes`**.
 
 ## Secrets (repository or org)
 
@@ -37,7 +37,7 @@ Current release: **`palettes` 0.0.3** on [TestPyPI](https://test.pypi.org/projec
 ## Install from TestPyPI
 
 ```bash
-pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ palettes
+pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ pydevices-palettes
 ```
 
 ## MIP install
