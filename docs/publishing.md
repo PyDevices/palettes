@@ -46,4 +46,4 @@ pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/
 mip.install("palettes", index="https://PyDevices.github.io/micropython-lib/mip/PyDevices")
 ```
 
-`palettes` is **not** part of `pydisplay-bundle`.
+`palettes` is **not** part of `pydevices-bundle`.

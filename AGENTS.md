@@ -1,11 +1,11 @@
 # AGENTS.md — palettes
 
-Color palette toolkit for pydisplay (`import palettes`).
+Color palette toolkit for PyDevices (`import palettes`).
 
 ## Environment
 
 - Python venv at `.venv` — `.venv/bin/python`, `.venv/bin/ruff`
-- No runtime dependencies on other pydisplay packages
+- No runtime dependencies on other PyDevices packages
 - Source layout: `lib/palettes/` (import name `palettes`)
 
 ## Tests and lint

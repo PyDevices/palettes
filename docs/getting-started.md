@@ -1,6 +1,6 @@
 # Getting started
 
-Palettes is a compact color source for pydisplay apps. Most code uses it by
+Palettes is a compact color source for PyDevices apps. Most code uses it by
 creating one palette object, then indexing it to pick colors for fills,
 graduated backgrounds, progress bars, badges, and other UI states.
 
@@ -45,7 +45,7 @@ palette constructor so the integer colors match the hardware's byte order.
 
 ## Examples worth reading
 
-The best real-world examples live in the pydisplay repo under the examples tree:
+The best real-world examples live in the pydevices-examples repo under the examples tree:
 
 - `palettes_demo.py` — cycles wheel, cube, and Material Design palettes
 - `graphics_simpletest.py` and `feathers.py` — use palette values for fills and drawing

@@ -1,6 +1,6 @@
 # palettes
 
-Python-only color palette toolkit for [pydisplay](https://github.com/PyDevices/pydisplay) — `wheel`, `cube`, `material_design`, and named Windows-16 colors on MicroPython, CircuitPython, and CPython. This package has no native C extension; it is published as a pure-Python package on TestPyPI for CPython and through micropython-lib / MIP for MicroPython.
+Python-only color palette toolkit for [PyDevices](https://github.com/PyDevices/pydevices) — `wheel`, `cube`, `material_design`, and named Windows-16 colors on MicroPython, CircuitPython, and CPython. This package has no native C extension; it is published as a pure-Python package on TestPyPI for CPython and through micropython-lib / MIP for MicroPython. Applications and live demos live in [pydevices-examples](https://github.com/PyDevices/pydevices-examples).
 
 ## Install
 
@@ -48,8 +48,8 @@ material = get_palette(name="material_design", color_depth=16)
 - [Documentation](https://palettes.readthedocs.io)
 - [Source](https://github.com/PyDevices/palettes)
 - [Issues](https://github.com/PyDevices/palettes/issues)
-- [PyScript demos](https://pydevices.github.io/pydisplay/pyscript/) (`palettes_demo.py`)
-- Related: [pydisplay](https://github.com/PyDevices/pydisplay), [pdwidgets](https://github.com/PyDevices/pdwidgets)
+- [PyScript demos](https://pydevices.github.io/pydevices-examples/pyscript/) (`palettes_demo.py`)
+- Related: [pydevices-examples](https://github.com/PyDevices/pydevices-examples), [pdwidgets](https://github.com/PyDevices/pdwidgets)
 
 ## License
 

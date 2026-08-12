@@ -31,4 +31,4 @@ Add to the example header:
 # pyodide wheels: palettes
 ```
 
-The pydisplay gallery generator adds these when examples import `palettes`.
+The pydevices-examples gallery generator adds these when examples import `palettes`.
