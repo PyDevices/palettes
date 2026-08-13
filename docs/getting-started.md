@@ -43,6 +43,18 @@ palette constructor so the integer colors match the hardware's byte order.
 | `"cube"` | `CubePalette` | Finite sets of evenly spaced colors |
 | `"material_design"` | `MDPalette` | UI themes and semantic color families |
 
+### 1. Color Wheel (`"wheel"`)
+![Color Wheel Preview](images/palette_wheel.png)
+
+### 2. Material Design (`"material_design"`)
+![Material Design Preview](images/palette_material.png)
+
+### 3. Color Cube (`"cube"`)
+![Color Cube Preview](images/palette_cube.png)
+
+### 4. Named Windows-16 (`"default"`)
+![Windows-16 Preview](images/palette_win16.png)
+
 ## Examples worth reading
 
 The best real-world examples live in the pydevices-examples repo under the examples tree:

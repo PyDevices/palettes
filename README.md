@@ -27,7 +27,7 @@ wheel = get_palette(name="wheel", length=360, saturation=1.0, color_depth=16)
 color = wheel[180]  # get color at hue angle 180°
 ```
 
-![Color Wheel Preview](docs/images/palette_wheel.png)
+![Color Wheel Preview](https://raw.githubusercontent.com/PyDevices/palettes/main/docs/images/palette_wheel.png)
 
 ---
 
@@ -40,7 +40,7 @@ primary_color = material[0]
 color_name = material.color_name(0)  # e.g., "Red 500"
 ```
 
-![Material Design Preview](docs/images/palette_material.png)
+![Material Design Preview](https://raw.githubusercontent.com/PyDevices/palettes/main/docs/images/palette_material.png)
 
 ---
 
@@ -51,7 +51,7 @@ A structured 3D RGB color cube mapped into a discrete indexed palette. Excellent
 cube = get_palette(name="cube", size=5, color_depth=16)
 ```
 
-![Color Cube Preview](docs/images/palette_cube.png)
+![Color Cube Preview](https://raw.githubusercontent.com/PyDevices/palettes/main/docs/images/palette_cube.png)
 
 ---
 
@@ -63,7 +63,7 @@ win16 = get_palette(name="default", color_depth=16)
 navy = win16[1]  # Black, Navy, Blue, Green, Teal, Lime, Cyan, etc.
 ```
 
-![Windows-16 Preview](docs/images/palette_win16.png)
+![Windows-16 Preview](https://raw.githubusercontent.com/PyDevices/palettes/main/docs/images/palette_win16.png)
 
 ---
 

@@ -27,12 +27,9 @@ different project name).
 
 The TestPyPI distribution is **`pydevices-palettes`**. Its import and MIP package remain **`palettes`**.
 
-## Secrets (repository or org)
+## Secrets
 
-| Secret | Purpose |
-|--------|---------|
-| `TESTPYPI_API_TOKEN` | TestPyPI upload |
-| `MICROPYTHON_LIB_DEPLOY_TOKEN` | PAT with `contents:write` on PyDevices/micropython-lib |
+Requires repository authentication secrets for package uploads and index syncing.
 
 ## Install from TestPyPI
 
