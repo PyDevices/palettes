@@ -3,18 +3,22 @@
 
 import binascii
 import math
-from pathlib import Path
 import struct
 import sys
 import zlib
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "lib"))
-from palettes import get_palette, WIN16
+from palettes import WIN16, get_palette
 
 
 def _png_chunk(kind, data):
     payload = kind + data
-    return struct.pack(">I", len(data)) + payload + struct.pack(">I", binascii.crc32(payload))
+    return (
+        struct.pack(">I", len(data))
+        + payload
+        + struct.pack(">I", binascii.crc32(payload))
+    )
 
 
 def save_rgb_png(path, pixels, width, height):
@@ -63,7 +67,7 @@ def generate_cube_image(out_path, width=360, height=120):
     rows = math.ceil(total / cols)
     cell_w = width // cols
     cell_h = height // rows
-    
+
     # Fill background black
     for i in range(len(buf)):
         buf[i] = 16
