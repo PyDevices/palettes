@@ -2,7 +2,7 @@
 
 Documentation for the **palettes** package — a pure-Python color-palette toolkit for
 PyDevices graphics, widgets, and animated UI effects. There is no native C extension;
-it is published to TestPyPI and micropython-lib / MIP.
+it is published to TestPyPI and MIP package index.
 
 ## Links
 

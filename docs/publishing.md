@@ -1,6 +1,6 @@
 # Publishing and releases
 
-How changes in this repo become versioned **`pydevices-palettes`** CPython wheels on [TestPyPI](https://test.pypi.org/project/pydevices-palettes/) and unprefixed **`palettes`** MicroPython packages on [micropython-lib gh-pages](https://PyDevices.github.io/mip).
+How changes in this repo become versioned **`pydevices-palettes`** CPython wheels on [TestPyPI](https://test.pypi.org/project/pydevices-palettes/) and unprefixed **`palettes`** MicroPython packages on [mip gh-pages](https://PyDevices.github.io/mip).
 
 ## Pipeline
 
@@ -9,7 +9,7 @@ palettes (commit on main)
   ./scripts/publish_release_tag.sh X.Y.Z --push
            │
            ▼
-publish-micropython-lib.yml
+publish-mip.yml
   sync → micropython/palettes/
   hatch + twine → TestPyPI
   rebuild mip/PyDevices → gh-pages
