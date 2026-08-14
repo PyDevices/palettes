@@ -1,6 +1,6 @@
 # Publishing and releases
 
-How changes in this repo become versioned **`pydevices-palettes`** CPython wheels on [TestPyPI](https://test.pypi.org/project/pydevices-palettes/) and unprefixed **`palettes`** MicroPython packages on [micropython-lib gh-pages](https://PyDevices.github.io/micropython-lib/mip/PyDevices).
+How changes in this repo become versioned **`pydevices-palettes`** CPython wheels on [TestPyPI](https://test.pypi.org/project/pydevices-palettes/) and unprefixed **`palettes`** MicroPython packages on [micropython-lib gh-pages](https://PyDevices.github.io/mip).
 
 ## Pipeline
 
@@ -40,7 +40,7 @@ pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/
 ## MIP install
 
 ```python
-mip.install("palettes", index="https://PyDevices.github.io/micropython-lib/mip/PyDevices")
+mip.install("palettes", index="https://PyDevices.github.io/mip")
 ```
 
 `palettes` is **not** part of `pydevices-bundle`.

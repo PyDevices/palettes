@@ -10,7 +10,7 @@ Install from [micropython-lib MIP](installation.md) for MicroPython or [TestPyPI
 
 ```python
 import mip
-mip.install("palettes", index="https://PyDevices.github.io/micropython-lib/mip/PyDevices")
+mip.install("palettes", index="https://PyDevices.github.io/mip")
 ```
 
 For a development clone, put `lib/` on `PYTHONPATH` or copy `lib/palettes/` to your device.
