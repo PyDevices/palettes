@@ -1,18 +1,17 @@
 # Publishing and releases
 
-How changes in this repo become versioned **`pydevices-palettes`** CPython wheels on [TestPyPI](https://test.pypi.org/project/pydevices-palettes/) and unprefixed **`palettes`** MicroPython packages on [mip gh-pages](https://PyDevices.github.io/mip).
+How a published GitHub Release becomes versioned **`pydevices-palettes`**
+artifacts on [TestPyPI](https://test.pypi.org/project/pydevices-palettes/) and
+the unprefixed **`palettes`** package in the PyDevices MIP index.
 
 ## Pipeline
 
 ```text
-palettes (commit on main)
-  ./scripts/publish_release_tag.sh X.Y.Z --push
-           │
-           ▼
-publish-mip.yml
-  sync → micropython/palettes/
-  hatch + twine → TestPyPI
-  rebuild mip/PyDevices → gh-pages
+published GitHub Release vX.Y.Z
+  publish-release-packages.yml
+    ├─ shared build + clean import test
+    ├─ Trusted Publishing → TestPyPI
+    └─ exact ref → serialized PyDevices/mip queue → Pages artifact
 ```
 
 ## Version numbers
@@ -21,15 +20,16 @@ Format: **`0.0.x`** semver until promoted. TestPyPI rejects duplicate versions a
 rejects filenames that were previously uploaded then deleted (even under a
 different project name).
 
-```bash
-./scripts/publish_release_tag.sh X.Y.Z --push
-```
+Update and commit `VERSION`, then create and publish a GitHub Release whose tag
+is exactly `vX.Y.Z`. To retry a failed channel, manually run
+`publish-release-packages.yml` with that same tag.
 
 The TestPyPI distribution is **`pydevices-palettes`**. Its import and MIP package remain **`palettes`**.
 
-## Secrets
+## Authentication
 
-Requires repository authentication secrets for package uploads and index syncing.
+TestPyPI uses Trusted Publishing with the `testpypi` GitHub environment. The
+existing `MICROPYTHON_LIB_DEPLOY_TOKEN` dispatches the central MIP queue.
 
 ## Install from TestPyPI
 
@@ -43,4 +43,5 @@ pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/
 mip.install("palettes", index="https://PyDevices.github.io/mip")
 ```
 
-`palettes` is **not** part of `pydevices-bundle`.
+`palettes` is independent of the `pydevices` and `pydevices-desktop`
+meta-packages.

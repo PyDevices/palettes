@@ -7,11 +7,15 @@ on:
       - 'lib/**'
       - 'tests/**'
       - 'scripts/**'
+      - 'palettes.toml'
+      - 'pyproject.toml'
   pull_request:
     paths:
       - 'lib/**'
       - 'tests/**'
       - 'scripts/**'
+      - 'palettes.toml'
+      - 'pyproject.toml'
   workflow_dispatch:
 
 jobs:
@@ -30,3 +34,9 @@ jobs:
         env:
           PYTHONPATH: lib
         run: python -m unittest discover -s tests
+
+  validate-pyscript-filesystem-toml:
+    uses: PyDevices/.github/.github/workflows/reusable-validate-pyscript-filesystem-toml.yml@publishing-v1
+    with:
+      config-path: palettes.toml
+      source-mappings: lib=/lib

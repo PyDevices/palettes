@@ -17,8 +17,9 @@ Color palette toolkit for PyDevices (`import palettes`).
 
 ## Publishing
 
-Tag `vX.Y.Z` triggers micropython-lib sync, MIP index rebuild, and a
-`pydevices-palettes` TestPyPI upload. The import and MIP name stay `palettes`.
+Commit `VERSION=X.Y.Z` and publish GitHub Release `vX.Y.Z` to trigger the
+shared build, central MIP queue, and `pydevices-palettes` TestPyPI upload. The
+import and MIP name stay `palettes`.
 See `docs/publishing.md`.
 
 ## Cursor Cloud specific instructions
