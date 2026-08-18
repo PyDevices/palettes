@@ -1,19 +1,38 @@
-# Getting started
+# palettes
+
+A pure-Python color-palette toolkit for PyDevices graphics, widgets, and animated
+UI effects. There is no native C extension; it is published to TestPyPI and the
+MIP index.
 
 Palettes is a compact color source for PyDevices apps. Most code uses it by
 creating one palette object, then indexing it to pick colors for fills,
 graduated backgrounds, progress bars, badges, and other UI states.
 
-## Setup
-
-Install from [PyDevices MIP](installation.md) for MicroPython or [TestPyPI](installation.md) for CPython:
+## Install
 
 ```python
+# MicroPython
 import mip
 mip.install("palettes", index="https://PyDevices.github.io/mip")
 ```
 
-For a development clone, put `lib/` on `PYTHONPATH` or copy `lib/palettes/` to your device.
+```bash
+# CPython
+pip install -i https://test.pypi.org/simple/ \
+  --extra-index-url https://pypi.org/simple/ pydevices-palettes
+```
+
+The TestPyPI distribution is **`pydevices-palettes`**; the import and MIP package
+name remain **`palettes`**. On CircuitPython, copy the `palettes/` package folder
+onto `sys.path`. For a development clone, put `lib/` on `PYTHONPATH`.
+
+In a PyScript example, declare it in the header — the pydevices-examples gallery
+generator adds these automatically when an example imports `palettes`:
+
+```python
+# pyscript mip: palettes
+# pyodide wheels: palettes
+```
 
 ## A practical pattern
 
@@ -64,3 +83,9 @@ The best real-world examples live in the pydevices-examples repo under the examp
 - `console_advanced_demo.py` and `calc_graphics.py` — show palette reuse in larger UIs
 
 PyScript installs `palettes` at runtime via `# pyscript mip: palettes`.
+
+## See also
+
+- [API reference](reference/palettes/index.md)
+- [pydevices documentation](https://github.com/PyDevices/pydevices/tree/main/docs) — the board contract and core packages
+- [Browser demos](https://pydevices.github.io/pydevices-examples/pyscript/)

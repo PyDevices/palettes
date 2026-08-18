@@ -87,23 +87,17 @@ display_drv.show()
 
 ## Installation
 
-### CPython (TestPyPI)
-
-```bash
-pip install \
-  -i https://test.pypi.org/simple/ \
-  --extra-index-url https://pypi.org/simple/ \
-  pydevices-palettes
-```
-
-### MicroPython (MIP)
-
 ```python
 import mip
 mip.install("palettes", index="https://PyDevices.github.io/mip")
 ```
 
----
+```bash
+pip install -i https://test.pypi.org/simple/ \
+  --extra-index-url https://pypi.org/simple/ pydevices-palettes
+```
+
+Full options: [docs/getting-started.md](docs/getting-started.md).
 
 ## Links & Demos
 

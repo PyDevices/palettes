@@ -17,10 +17,9 @@ Color palette toolkit for PyDevices (`import palettes`).
 
 ## Publishing
 
-Commit `VERSION=X.Y.Z` and publish GitHub Release `vX.Y.Z` to trigger the
-shared build, central MIP queue, and `pydevices-palettes` TestPyPI upload. The
-import and MIP name stay `palettes`.
-See `docs/publishing.md`.
+Commit `VERSION=X.Y.Z` and publish GitHub Release `vX.Y.Z`. The import and MIP
+name stay `palettes`; the TestPyPI distribution is `pydevices-palettes`.
+Procedure: [.github/docs/publishing-automation.md](https://github.com/PyDevices/.github/blob/main/docs/publishing-automation.md).
 
 ## Cursor Cloud specific instructions
 
