@@ -19,8 +19,11 @@ This package is published as a pure-Python CPython wheel to TestPyPI.
 pip install \
   -i https://test.pypi.org/simple/ \
   --extra-index-url https://pypi.org/simple/ \
-  palettes
+  pydevices-palettes
 ```
+
+The TestPyPI distribution is **`pydevices-palettes`**; the import and MIP
+package name remain **`palettes`**.
 
 ## PyScript
 
