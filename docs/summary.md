@@ -1,2 +1,2 @@
-* [palettes](getting-started.md)
+* [palettes](index.md)
 * [API Reference](reference/)

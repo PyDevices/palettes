@@ -97,7 +97,7 @@ pip install -i https://test.pypi.org/simple/ \
   --extra-index-url https://pypi.org/simple/ pydevices-palettes
 ```
 
-Full options: [docs/getting-started.md](docs/getting-started.md).
+Full options: [docs/index.md](docs/index.md).
 
 ## Links & Demos
 
