@@ -1,2 +1,5 @@
-* [palettes](index.md)
+* [Home](index.md)
+* [Palette Gallery](palette-gallery.md)
+* [Color Math & Formats](color-math.md)
+* [Integrations](integrations.md)
 * [API Reference](reference/)

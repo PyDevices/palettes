@@ -1,91 +1,138 @@
 # palettes
 
-A pure-Python color-palette toolkit for PyDevices graphics, widgets, and animated
-UI effects. There is no native C extension; it is published to TestPyPI and the
-MIP index.
+<div class="hero-banner">
+  <h1>🎨 palettes</h1>
+  <p><strong>A lightweight, pure-Python color palette and UI theme engine</strong> for microcontrollers, embedded displays, desktop Python, and the browser.</p>
+  <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem;">
+    <span class="badge badge-orange">📦 MIP: palettes</span>
+    <span class="badge badge-orange">🐍 PyPI: pydevices-palettes</span>
+    <span class="badge badge-green">⚡ Zero C Dependencies</span>
+    <span class="badge">🌐 MicroPython · CircuitPython · CPython · Pyodide</span>
+  </div>
+</div>
 
-Palettes is a compact color source for PyDevices apps. Most code uses it by
-creating one palette object, then indexing it to pick colors for fills,
-graduated backgrounds, progress bars, badges, and other UI states.
+<div class="grid cards">
+  <div>
+    <h3>🌈 Color Wheels</h3>
+    <p>Generate continuous color ramps and rainbow gradients with configurable saturation and hue lengths.</p>
+  </div>
+  <div>
+    <h3>🎯 Material Design</h3>
+    <p>Access standardized semantic UI palettes with shades from 50 to 900 for modern themes and widgets.</p>
+  </div>
+  <div>
+    <h3>🧊 Color Cubes</h3>
+    <p>Evenly distributed 8, 27, 64, and 125 color spaces optimized for dithering and quantized graphics.</p>
+  </div>
+  <div>
+    <h3>🔄 Byte-Swapping</h3>
+    <p>First-class 16-bit RGB565 byte swapping (<code>swapped=True</code>) for direct SPI panel compatibility.</p>
+  </div>
+</div>
 
-## Install
+---
 
-```python
-# MicroPython
-import mip
-mip.install("palettes", index="https://PyDevices.github.io/mip")
-```
+## 🚀 Quick Install
 
-```bash
-# CPython
-pip install -i https://test.pypi.org/simple/ \
-  --extra-index-url https://pypi.org/simple/ pydevices-palettes
-```
+=== "MicroPython (MIP)"
 
-The TestPyPI distribution is **`pydevices-palettes`**; the import and MIP package
-name remain **`palettes`**. On CircuitPython, copy the `palettes/` package folder
-onto `sys.path`. For a development clone, put `lib/` on `PYTHONPATH`.
+    ```python
+    import mip
+    mip.install("palettes", index="https://PyDevices.github.io/mip")
+    ```
 
-In a PyScript example, declare it in the header — the pydevices-examples gallery
-generator adds these automatically when an example imports `palettes`:
+=== "CPython (TestPyPI)"
 
-```python
-# pyscript mip: palettes
-# pyodide wheels: palettes
-```
+    ```bash
+    pip install -i https://test.pypi.org/simple/ \
+      --extra-index-url https://pypi.org/simple/ pydevices-palettes
+    ```
 
-## A practical pattern
+=== "CircuitPython"
 
-The most common workflow is to create a palette once and then reuse it through
-an app or a draw loop:
+    Copy the `palettes/` folder from the repository into your board's `CIRCUITPY/lib/` folder.
+
+=== "PyScript / Pyodide"
+
+    In PyScript headers or Pyodide configurations, declare:
+    ```python
+    # pyscript mip: palettes
+    # pyodide wheels: palettes
+    ```
+
+---
+
+## 💻 Live Interactive Demo
+
+Try tweaking the palette parameters below. Click **▶ Run** to execute the code live in your browser using Pyodide:
+
+<div class="pydevices-live-demo">
+  <div class="demo-editor-pane">
+    <textarea class="code-editor">
+from palettes import get_palette
+from displaydev.psdisplay import PSDisplay
+
+# Initialize display canvas (320x240)
+display = PSDisplay(CANVAS_ID, width=320, height=240)
+display.fill(0x1082)
+
+# Generate a 256-color wheel palette
+palette = get_palette("wheel", color_depth=16, length=256, saturation=1.0)
+
+# Draw vertical color bars
+bar_width = display.width // 32
+for i in range(32):
+    color = palette[i * 8]
+    display.fill_rect(i * bar_width, 20, bar_width, 100, color)
+
+# Generate Material Design amber ramp
+amber = get_palette("material_design", color_depth=16, color_name="amber")
+for i, shade in enumerate(["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"]):
+    display.fill_rect(i * 30 + 10, 140, 26, 60, amber[shade])
+
+display.show()
+print("Drawn 32 color wheel bands and 10 Material Design amber shades!")
+    </textarea>
+    <div class="demo-controls">
+      <button class="run-btn" disabled>▶ Run</button>
+      <button class="reset-btn">↺ Reset</button>
+      <span class="demo-status">Initializing Python…</span>
+    </div>
+    <pre class="demo-output"></pre>
+  </div>
+  <div class="demo-canvas-pane">
+    <canvas id="canvas_palettes_index" width="320" height="240" tabindex="0"></canvas>
+  </div>
+</div>
+
+---
+
+## 📖 Practical Usage Pattern
+
+Construct a palette once and index it inside your application draw loop:
 
 ```python
 from palettes import get_palette
 
-# Match the display's native color depth.
+# Match the display's native color depth (16-bit RGB565)
 palette = get_palette(name="wheel", color_depth=16, length=256, saturation=1.0)
 
-# Use palette values for fills, gradients, and status colors.
+# Index directly into the palette
 for i in range(16):
     display_drv.fill_rect(0, i * 8, 80, 8, palette[i * 16])
 ```
 
-If the display expects byte-swapped 16-bit values, pass `swapped=True` to the
-palette constructor so the integer colors match the hardware's byte order.
+If the physical display expects byte-swapped 16-bit values (common on SPI TFTs like the ST7789 or ILI9341), pass `swapped=True`:
 
-## Palette types
+```python
+palette = get_palette(name="wheel", color_depth=16, swapped=True)
+```
 
-| `name` | Class | Typical use |
-|--------|-------|-------------|
-| `"default"` | `Palette` | Small named Windows-style color set |
-| `"wheel"` | `WheelPalette` | Gradients and continuous color ramps |
-| `"cube"` | `CubePalette` | Finite sets of evenly spaced colors |
-| `"material_design"` | `MDPalette` | UI themes and semantic color families |
+---
 
-### 1. Color Wheel (`"wheel"`)
-![Color Wheel Preview](images/palette_wheel.png)
+## 📚 Documentation Map
 
-### 2. Material Design (`"material_design"`)
-![Material Design Preview](images/palette_material.png)
-
-### 3. Color Cube (`"cube"`)
-![Color Cube Preview](images/palette_cube.png)
-
-### 4. Named Windows-16 (`"default"`)
-![Windows-16 Preview](images/palette_win16.png)
-
-## Examples worth reading
-
-The best real-world examples live in the pydevices-examples repo under the examples tree:
-
-- `palettes_demo.py` — cycles wheel, cube, and Material Design palettes
-- `graphics_simpletest.py` and `feathers.py` — use palette values for fills and drawing
-- `console_advanced_demo.py` and `calc_graphics.py` — show palette reuse in larger UIs
-
-PyScript installs `palettes` at runtime via `# pyscript mip: palettes`.
-
-## See also
-
-- [API reference](reference/palettes/index.md)
-- [pydevices documentation](https://github.com/PyDevices/pydevices/tree/main/docs) — the board contract and core packages
-- [Browser demos](https://pydevices.github.io/pydevices-examples/pyscript/)
+* 🎨 [**Palette Gallery**](palette-gallery.md) — Visual previews and tables for Wheel, Material Design, Cube, and Win16 palettes.
+* 🔢 [**Color Math & Formats**](color-math.md) — RGB565 bit-packing, endianness swapping, and HSL/HSV math.
+* 🧩 [**Integrations**](integrations.md) — Recipes for `pygraphics`, `pdwidgets`, and hardware display drivers.
+* 📚 [**API Reference**](reference/palettes/index.md) — Complete docstrings and class references.
