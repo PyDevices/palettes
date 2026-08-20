@@ -134,6 +134,35 @@ palette = get_palette(name="wheel", color_depth=16, swapped=True)
 
 ---
 
+## 🎮 Featured Browser Demos
+
+Explore full-color gradient and animation applications built with `palettes`:
+
+<div class="grid cards">
+  <div>
+    <h3>🎨 Palettes Gallery Showcase</h3>
+    <p>Interactive color visualizer exploring Material Design tokens, HSV wheels, and RGB cubes.</p>
+    <p><a href="https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=palettes_demo&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
+  </div>
+  <div>
+    <h3>🪶 Rainbow Feathers</h3>
+    <p>Geometric generative art rendering smooth multi-chromatic feather curves.</p>
+    <p><a href="https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=feathers&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
+  </div>
+  <div>
+    <h3>🔄 Palette Rotations</h3>
+    <p>Real-time palette cycling and rotational sweeps demonstrating zero-cost animations.</p>
+    <p><a href="https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=rotations&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
+  </div>
+  <div>
+    <h3>📜 Gradient Scrolling</h3>
+    <p>Hardware vertical scrolling demonstration paired with high-precision palette shading.</p>
+    <p><a href="https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=scroll&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
+  </div>
+</div>
+
+---
+
 ## 📚 Documentation Map
 
 * 🎨 [**Palette Gallery**](palette-gallery.md) — Visual previews and tables for Wheel, Material Design, Cube, and Win16 palettes.

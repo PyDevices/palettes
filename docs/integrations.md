@@ -91,3 +91,17 @@ while True:
     offset = (offset + 1) % 256
     time.sleep(0.016)  # ~60 FPS
 ```
+
+---
+
+## 🎮 Live Interactive Gallery Examples
+
+Experience full `palettes` color gradients and animation demos live in your browser:
+
+| Example | Description | Live PyScript Link |
+|:---|:---|:---|
+| **`palettes_demo`** | Comprehensive gallery showcasing all standard palettes and color bars | [**▶ Launch `palettes_demo`**](https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=palettes_demo&deps=pydevices-palettes,pydevices-pygraphics) |
+| **`feathers`** | Smooth multi-chromatic feather curves and color-cycling geometry | [**▶ Launch `feathers`**](https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=feathers&deps=pydevices-palettes,pydevices-pygraphics) |
+| **`rotations`** | Rotational color sweeps and geometric palette mapping | [**▶ Launch `rotations`**](https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=rotations&deps=pydevices-palettes,pydevices-pygraphics) |
+| **`scroll`** | Smooth gradient scrolling demo with palette cycling | [**▶ Launch `scroll`**](https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=scroll&deps=pydevices-palettes,pydevices-pygraphics) |
+
