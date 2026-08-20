@@ -85,10 +85,14 @@ for i in range(32):
     color = palette[i * 8]
     display.fill_rect(i * bar_width, 20, bar_width, 100, color)
 
-# Generate Material Design amber ramp
-amber = get_palette("material_design", color_depth=16, color_name="amber")
-for i, shade in enumerate(["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"]):
-    display.fill_rect(i * 30 + 10, 140, 26, 60, amber[shade])
+# Material Design amber ramp
+md = get_palette("material_design", color_depth=16)
+shades = [
+    md.AMBER_S50, md.AMBER_S100, md.AMBER_S200, md.AMBER_S300, md.AMBER_S400,
+    md.AMBER_S500, md.AMBER_S600, md.AMBER_S700, md.AMBER_S800, md.AMBER_S900
+]
+for i, color in enumerate(shades):
+    display.fill_rect(i * 30 + 10, 140, 26, 60, color)
 
 display.show()
 print("Drawn 32 color wheel bands and 10 Material Design amber shades!")
