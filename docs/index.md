@@ -56,9 +56,17 @@
 
     In PyScript headers or Pyodide configurations, declare:
     ```python
-    # pyscript mip: palettes
-    # pyodide wheels: palettes
+    import micropip
+    await micropip.install(
+        "pydevices-palettes", index_urls="https://test.pypi.org/simple/"
+    )
+
+    from palettes import get_palette
     ```
+
+    The wheel is named `pydevices-palettes`; the module you import is
+    `palettes`. On MicroPython the MIP package name is `palettes`
+    (`mip.install("palettes", index="https://PyDevices.github.io/mip")`).
 
 ---
 
