@@ -103,7 +103,7 @@ Full options: [docs/index.md](docs/index.md).
 
 - [Documentation](https://palettes.readthedocs.io)
 - [Source Code](https://github.com/PyDevices/palettes)
-- [PyScript Live Demos](https://pydevices.github.io/pydevices-examples/gallery/) (`palettes_demo.py`)
+- [PyScript Live Demos](https://pydevices.github.io/pydevices-examples/pyscript/) (`palettes_demo.py`)
 - Related: [pydevices](https://github.com/PyDevices/pydevices), [pdwidgets](https://github.com/PyDevices/pdwidgets), [pydevices-examples](https://github.com/PyDevices/pydevices-examples)
 
 ## License

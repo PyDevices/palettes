@@ -150,22 +150,22 @@ Explore full-color gradient and animation applications built with `palettes`:
   <div>
     <h3>🎨 Palettes Gallery Showcase</h3>
     <p>Interactive color visualizer exploring Material Design tokens, HSV wheels, and RGB cubes.</p>
-    <p><a href="https://pydevices.github.io/pydevices-examples/gallery/pyodide.html?modules=palettes_demo&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
+    <p><a href="https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=palettes_demo&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
   </div>
   <div>
     <h3>🪶 Rainbow Feathers</h3>
     <p>Geometric generative art rendering smooth multi-chromatic feather curves.</p>
-    <p><a href="https://pydevices.github.io/pydevices-examples/gallery/pyodide.html?modules=feathers&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
+    <p><a href="https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=feathers&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
   </div>
   <div>
     <h3>🔄 Palette Rotations</h3>
     <p>Real-time palette cycling and rotational sweeps demonstrating zero-cost animations.</p>
-    <p><a href="https://pydevices.github.io/pydevices-examples/gallery/pyodide.html?modules=rotations&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
+    <p><a href="https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=rotations&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
   </div>
   <div>
     <h3>📜 Gradient Scrolling</h3>
     <p>Hardware vertical scrolling demonstration paired with high-precision palette shading.</p>
-    <p><a href="https://pydevices.github.io/pydevices-examples/gallery/pyodide.html?modules=scroll&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
+    <p><a href="https://pydevices.github.io/pydevices-examples/pyscript/pyodide.html?modules=scroll&deps=pydevices-palettes,pydevices-pygraphics" target="_blank" rel="noopener"><strong>▶ Launch Live Demo</strong></a></p>
   </div>
 </div>
 
