@@ -7,7 +7,7 @@
     <span class="badge badge-orange">📦 MIP: palettes</span>
     <span class="badge badge-orange">🐍 PyPI: pydevices-palettes</span>
     <span class="badge badge-green">⚡ Zero C Dependencies</span>
-    <span class="badge">🌐 MicroPython · CircuitPython · CPython · Pyodide</span>
+    <span class="badge">🌐 MicroPython · CircuitPython · CPython · Direct WebAssembly · Pyodide</span>
   </div>
 </div>
 
@@ -72,16 +72,16 @@
 
 ## 💻 Live Interactive Demo
 
-Try tweaking the palette parameters below. Click **▶ Run** to execute the code live in your browser using Pyodide:
+Try tweaking the palette parameters below. Click **▶ Run** to execute the code with direct MicroPython WebAssembly:
 
 <div class="pydevices-live-demo">
   <div class="demo-editor-pane">
     <textarea class="code-editor">
 from palettes import get_palette
-from displaydev.psdisplay import PSDisplay
+from displaydev.auto import AutoDisplay
 
 # Initialize display canvas (320x240)
-display = PSDisplay(CANVAS_ID, width=320, height=240)
+display = AutoDisplay(width=320, height=240, canvas_id=CANVAS_ID)
 display.fill(0x1082)
 
 # Generate a 256-color wheel palette

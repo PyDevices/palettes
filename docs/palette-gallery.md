@@ -19,9 +19,9 @@ Adjust the palette parameters below and click **▶ Run** to see the colors rend
   <div class="demo-editor-pane">
     <textarea class="code-editor">
 from palettes import get_palette
-from displaydev.psdisplay import PSDisplay
+from displaydev.auto import AutoDisplay
 
-display = PSDisplay(CANVAS_ID, width=320, height=240)
+display = AutoDisplay(width=320, height=240, canvas_id=CANVAS_ID)
 display.fill(0x0000)
 
 # Try changing name to "cube", "default", or "material_design"
