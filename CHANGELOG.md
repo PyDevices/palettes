@@ -1,3 +1,7 @@
+## v0.0.13 (2026-08-29)
+
+- Adopt publishing-v6 (MIP second-publication race fix)
+
 ## v0.0.13.dev2 (2026-08-29)
 
 
