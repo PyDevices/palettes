@@ -4,15 +4,15 @@ Color palette toolkit for PyDevices (`import palettes`).
 
 ## Environment
 
-- Python venv at `.venv` — `.venv/bin/python`, `.venv/bin/ruff`
+- Python venv at `.venv` — `python3`, `ruff`
 - No runtime dependencies on other PyDevices packages
 - Source layout: `lib/palettes/` (import name `palettes`)
 
 ## Tests and lint
 
 ```bash
-.venv/bin/python -m unittest discover -s tests
-.venv/bin/ruff check lib tests scripts
+python3 -m unittest discover -s tests
+ruff check lib tests scripts
 ```
 
 ## Publishing
@@ -29,5 +29,5 @@ command above needs `lib/` on the path — the bare command fails with
 `ModuleNotFoundError: No module named 'palettes'`. Mirror CI (`env: PYTHONPATH: lib`):
 
 ```bash
-PYTHONPATH=lib .venv/bin/python -m unittest discover -s tests
+PYTHONPATH=lib python3 -m unittest discover -s tests
 ```

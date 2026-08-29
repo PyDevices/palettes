@@ -37,16 +37,15 @@ pygraphics.text16(fb, "pygraphics", 20, 56, 0xFFFF)
 import pdwidgets as pd
 from palettes import get_palette
 
-# Material Design Teal palette for primary theme
-teal = get_palette("material_design", color_depth=16, color_name="teal")
-grey = get_palette("material_design", color_depth=16, color_name="grey")
+# Material Design palette for the theme
+md = get_palette("material_design", color_depth=16)
 
-screen = pd.Screen(display, bg=grey["100"])
+screen = pd.Screen(display, bg=md.GREY_S100)
 
 # Theme widgets using palette tokens
-app_bar = pd.Widget(screen, w=screen.width, h=32, bg=teal["700"], align=pd.ALIGN.TOP)
-btn_primary = pd.Button(screen, label="Submit", bg=teal["500"], fg=0xFFFF, x=20, y=50, radius=4)
-btn_cancel  = pd.Button(screen, label="Cancel", bg=grey["300"], fg=grey["900"], x=120, y=50, radius=4)
+app_bar = pd.Widget(screen, w=screen.width, h=32, bg=md.TEAL_S700, align=pd.ALIGN.TOP)
+btn_primary = pd.Button(screen, label="Submit", bg=md.TEAL_S500, fg=0xFFFF, x=20, y=50, radius=4)
+btn_cancel  = pd.Button(screen, label="Cancel", bg=md.GREY_S300, fg=md.GREY_S900, x=120, y=50, radius=4)
 ```
 
 ---

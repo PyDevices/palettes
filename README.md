@@ -36,8 +36,8 @@ A curated collection of modern UI colors based on Google's Material Design palet
 
 ```python
 material = get_palette(name="material_design", color_depth=16)
-primary_color = material[0]
-color_name = material.color_name(0)  # e.g., "Red 500"
+primary_color = material.RED_S500     # shades are attributes: <FAMILY>_S<shade>
+accent_color  = material.BLUE_A400    # accents: <FAMILY>_A<shade>
 ```
 
 ![Material Design Preview](https://raw.githubusercontent.com/PyDevices/palettes/main/docs/images/palette_material.png)

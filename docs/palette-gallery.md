@@ -82,16 +82,16 @@ color_50 = wheel[50]
 ```python
 from palettes import get_palette
 
-# Get the blue palette family
-blue = get_palette("material_design", color_depth=16, color_name="blue")
+md = get_palette("material_design", color_depth=16)
 
-header_bg = blue["500"]  # Primary brand color
-card_bg   = blue["50"]   # Light tint background
-accent_fg = blue["A400"] # Vivid accent
+# Shades are attributes: <FAMILY>_S<shade>, accents <FAMILY>_A<shade>.
+header_bg = md.BLUE_S500  # 0x24BE -- primary brand color
+card_bg   = md.BLUE_S50   # 0xE79F -- light tint background
+accent_fg = md.BLUE_A400  # 0x2BDF -- vivid accent
 ```
 
 ### Available Color Families
-`red`, `pink`, `purple`, `deep_purple`, `indigo`, `blue`, `light_blue`, `cyan`, `teal`, `green`, `light_green`, `lime`, `yellow`, `amber`, `orange`, `deep_orange`, `brown`, `grey`, `blue_grey`.
+Attribute prefixes: `RED`, `PINK`, `PURPLE`, `DEEP_PURPLE`, `INDIGO`, `BLUE`, `LIGHT_BLUE`, `CYAN`, `TEAL`, `GREEN`, `LIGHT_GREEN`, `LIME`, `YELLOW`, `AMBER`, `ORANGE`, `DEEP_ORANGE`, `BROWN`, `GREY`, `BLUE_GREY` -- each with `_S50`..`_S900` shades and (where Material defines them) `_A100`..`_A700` accents; the bare family name (e.g. `md.BLUE`) is its 500 shade.
 
 ---
 
@@ -109,7 +109,8 @@ accent_fg = blue["A400"] # Vivid accent
 | **125** | 125 | 5 steps (0, 64, 128, 191, 255) | High-fidelity dithering |
 
 ```python
-cube = get_palette("cube", color_depth=16, length=64)
+# size is the steps per channel: size=4 -> 4x4x4 = 64 colors
+cube = get_palette("cube", color_depth=16, size=4)
 ```
 
 ---
@@ -125,10 +126,13 @@ from palettes import get_palette
 
 win16 = get_palette("default", color_depth=16)
 
-black   = win16["black"]   # 0x0000
-red     = win16["red"]     # 0x8000
-green   = win16["green"]   # 0x0400
-blue    = win16["blue"]    # 0x0010
-yellow  = win16["yellow"]  # 0x8400
-white   = win16["white"]   # 0xFFFF
+black  = win16.BLACK    # 0x0000
+red    = win16.RED      # 0xF800
+green  = win16.GREEN    # 0x0400
+blue   = win16.BLUE     # 0x001F
+yellow = win16.YELLOW   # 0xFFE0
+white  = win16.WHITE    # 0xFFFF
+
+win16[0]              # integer indexing works too -> 0x0000
+win16.color_name(0)   # "Black"
 ```
