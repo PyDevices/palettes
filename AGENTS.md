@@ -11,7 +11,7 @@ Color palette toolkit for PyDevices (`import palettes`).
 ## Tests and lint
 
 ```bash
-python3 -m unittest discover -s tests
+PYTHONPATH=lib python3 -m unittest discover -s tests
 ruff check lib tests scripts
 ```
 
@@ -23,11 +23,4 @@ Procedure: [.github/docs/publishing-automation.md](https://github.com/PyDevices/
 
 ## Cursor Cloud specific instructions
 
-The Cloud Agent update script creates the repo-root `.venv` (with `ruff`). Since
-`palettes` is a source-only package (not pip-installed), the `unittest discover`
-command above needs `lib/` on the path — the bare command fails with
-`ModuleNotFoundError: No module named 'palettes'`. Mirror CI (`env: PYTHONPATH: lib`):
-
-```bash
-PYTHONPATH=lib python3 -m unittest discover -s tests
-```
+The Cloud Agent update script creates the repo-root `.venv` (with `ruff`).

@@ -20,31 +20,34 @@ Example:
     >>> palette.color_name(0)
 
 Attributes:
-    WIN16: Mapping of ``0xRRGGBB`` values to Windows 16-color names. Used as
-        the default name table for :class:`Palette` and
-        :class:`~palettes.wheel.WheelPalette`.
+    WIN16: Ordered ``(0xRRGGBB, name)`` pairs for the Windows 16 colors, the
+        default name table for :class:`Palette` and
+        :class:`~palettes.wheel.WheelPalette`. A pair's position is its palette
+        index. This is a tuple rather than a dict on purpose: MicroPython and
+        CircuitPython do not preserve dict insertion order, so a dict would
+        give a different index order on each interpreter.
 """
 
 __all__ = ["WIN16", "get_palette", "Palette", "MappedPalette"]
 
-WIN16 = {
-    0x000000: "Black",
-    0x000080: "Navy",
-    0x0000FF: "Blue",
-    0x008000: "Green",
-    0x008080: "Teal",
-    0x00FF00: "Lime",
-    0x00FFFF: "Cyan",
-    0x800000: "Maroon",
-    0x800080: "Purple",
-    0x808000: "Olive",
-    0x808080: "Grey",
-    0xC0C0C0: "Silver",
-    0xFF0000: "Red",
-    0xFF00FF: "Magenta",
-    0xFFFF00: "Yellow",
-    0xFFFFFF: "White",
-}
+WIN16 = (
+    (0x000000, "Black"),
+    (0x000080, "Navy"),
+    (0x0000FF, "Blue"),
+    (0x008000, "Green"),
+    (0x008080, "Teal"),
+    (0x00FF00, "Lime"),
+    (0x00FFFF, "Cyan"),
+    (0x800000, "Maroon"),
+    (0x800080, "Purple"),
+    (0x808000, "Olive"),
+    (0x808080, "Grey"),
+    (0xC0C0C0, "Silver"),
+    (0xFF0000, "Red"),
+    (0xFF00FF, "Magenta"),
+    (0xFFFF00, "Yellow"),
+    (0xFFFFFF, "White"),
+)
 
 
 def get_palette(name="default", **kwargs):
@@ -85,7 +88,9 @@ class Palette:
 
     Subclasses override :meth:`_get_rgb` to define how each index maps to red,
     green, and blue components. The resulting color can then be used for fills,
-    gradients, status indicators, and other display operations.
+    gradients, status indicators, and other display operations. A subclass may
+    also set ``_names`` to its own ordered sequence of ``(0xRRGGBB, name)``
+    pairs before calling ``__init__``; pair position is palette index.
 
     In practice, applications usually create one palette for a screen or view and
     then reuse it for many draw calls rather than generating colors inline. Named
@@ -119,17 +124,19 @@ class Palette:
             self._names = WIN16
         if not hasattr(self, "_length"):
             self._length = len(self._names)
+        # Reverse lookup for rgb_name(); index order is still defined by _names.
+        self._names_by_value = dict(self._names)
 
         self._define_named_colors()
 
     def _define_named_colors(self):
-        for color, name in self._names.items():
+        for index, (color, name) in enumerate(self._names):
             if self._color_depth == 16:
                 color = self.color565(color)
             elif self._color_depth == 8:
                 color = self.color332(color)
             elif self._color_depth == 4:
-                color = list(self._names.keys()).index(color)
+                color = index
             setattr(self, name.replace(" ", "_").upper(), color)
 
     @property
@@ -275,7 +282,8 @@ class Palette:
         """
         if isinstance(r, (tuple, list)):
             r, g, b = r
-        return self._names.get(r << 16 | g << 8 | b, f"#{r:02X}{g:02X}{b:02X}")
+        value = r << 16 | g << 8 | b
+        return self._names_by_value.get(value, f"#{r:02X}{g:02X}{b:02X}")
 
     def luminance(self, index):
         """Perceived brightness of the color at ``index`` (ITU-R BT.601).
@@ -302,7 +310,7 @@ class Palette:
         return (r + g + b) / 3 / 255
 
     def _get_rgb(self, index):
-        color = list(self._names.keys())[index]
+        color = self._names[index][0]
         return color >> 16 & 0xFF, color >> 8 & 0xFF, color & 0xFF
 
 
