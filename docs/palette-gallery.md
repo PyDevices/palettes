@@ -68,7 +68,7 @@ color_50 = wheel[50]
 * `length` (int): Number of steps around the hue circle (default `256`).
 * `saturation` (float): Color saturation between `0.0` (grayscale) and `1.0` (vibrant, default `1.0`).
 * `value` (float): Brightness multiplier between `0.0` and `1.0` (default `1.0`).
-* `color_depth` (int): Bit depth (`16` for RGB565, `24` for RGB888, `32` for ARGB8888).
+* `color_depth` (int): Bit depth — `4` (palette index), `8` (RGB332), `16` (RGB565) or `24` (`0xRRGGBB`). See [Depth Constants](color-math.md#4-depth-constants).
 * `swapped` (bool): If `True`, swap bytes in 16-bit RGB565 for SPI display hardware.
 
 ---
@@ -101,12 +101,15 @@ Attribute prefixes: `RED`, `PINK`, `PURPLE`, `DEEP_PURPLE`, `INDIGO`, `BLUE`, `L
 
 ![Color Cube Preview](images/palette_cube.png)
 
-| Cube Size | Total Colors | Steps per Channel (R, G, B) | Typical Use |
+`size=` is the edge length — the steps per channel — and must be 2 to 5.
+The first column is what you pass; the second is what you get.
+
+| `size=` argument | Total Colors | Steps per Channel (R, G, B) | Typical Use |
 |:---|:---|:---|:---|
-| **8** | 8 | 2 steps (0, 255) | 3-bit primary colors |
-| **27** | 27 | 3 steps (0, 127, 255) | Ultra-compact retro UIs |
-| **64** | 64 | 4 steps (0, 85, 170, 255) | 6-bit color quantization |
-| **125** | 125 | 5 steps (0, 64, 128, 191, 255) | High-fidelity dithering |
+| **2** | 8 | 2 steps (0, 255) | 3-bit primary colors |
+| **3** | 27 | 3 steps (0, 127, 255) | Ultra-compact retro UIs |
+| **4** | 64 | 4 steps (0, 85, 170, 255) | 6-bit color quantization |
+| **5** | 125 | 5 steps (0, 64, 128, 191, 255) | High-fidelity dithering |
 
 ```python
 # size is the steps per channel: size=4 -> 4x4x4 = 64 colors

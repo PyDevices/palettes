@@ -2,7 +2,7 @@
 
 **Pure-Python, zero-dependency color palette toolkit**
 
-`palettes` provides pre-computed, display-ready and integer-indexed color lookup tables for any Python environment. It has **zero dependencies** on any other PyDevices library or external package, running identically on **MicroPython**, **CircuitPython**, **CPython (desktop/server)**, and **PyScript (Web)**.
+`palettes` provides pre-computed, display-ready and integer-indexed color lookup tables for any Python environment. It has **zero dependencies** on any other PyDevices library or external package — the Quick Start below runs on a bare Python with nothing else installed. See [Support and platforms](#support-and-platforms) for where it is proven to run.
 
 ### Universal Color Tooling
 While `palettes` integrates seamlessly with PyDevices displays, it is a standalone utility useful for **any Python project** needing easy-to-access named and indexed palettes, including:
@@ -67,10 +67,42 @@ navy = win16[1]  # Black, Navy, Blue, Green, Teal, Lime, Cyan, etc.
 
 ---
 
-## Quick Start: Painting on a Display
+## Quick Start
+
+Nothing but `palettes` — this runs as it stands, on any of the four runtimes:
 
 ```python
-import board_config
+from palettes import get_palette
+
+# A 360-step colour wheel, ready to write to an RGB565 display
+wheel = get_palette(name="wheel", length=360, color_depth=16)
+print("red, green, blue as RGB565: 0x%04X 0x%04X 0x%04X" % (wheel[0], wheel[120], wheel[240]))
+
+# Named colours, by attribute
+win16 = get_palette(name="default", color_depth=24)
+print("RED is 0x%06X, and its name back again is %r" % (win16.RED, win16.color_name(12)))
+
+# Material Design, 0xRRGGBB
+md = get_palette(name="material_design", color_depth=24)
+print("Amber 500 is 0x%06X" % md.AMBER_S500)
+```
+
+```
+red, green, blue as RGB565: 0xF800 0x07E0 0x001F
+RED is 0xFF0000, and its name back again is 'Red'
+Amber 500 is 0xFFC107
+```
+
+### Painting on a display
+
+Put those values on a screen and you need a display driver, which `palettes`
+deliberately does not depend on. `board_config` is not installable from here —
+it is a per-board file you copy onto the device from
+[pydevices/board_configs](https://github.com/PyDevices/pydevices/tree/main/board_configs),
+or that `pydevices-desktop` provides on a desktop:
+
+```python
+import board_config          # from PyDevices/pydevices, not from palettes
 from palettes import get_palette
 
 display_drv = board_config.display_drv
@@ -97,7 +129,39 @@ pip install -i https://test.pypi.org/simple/ \
   --extra-index-url https://pypi.org/simple/ pydevices-palettes
 ```
 
+`pydevices-palettes` is also parked on production PyPI, so a plain
+`pip install pydevices-palettes` succeeds — one release behind. TestPyPI is the
+current channel; use the command above.
+
+### From source
+
+```bash
+git clone https://github.com/PyDevices/palettes && cd palettes
+pip install -e .                                  # or just PYTHONPATH=lib
+PYTHONPATH=lib python3 -m unittest discover -s tests
+ruff check lib tests scripts
+```
+
+Those last two are what CI runs, so they cannot drift silently.
+
 Full options: [docs/index.md](docs/index.md).
+
+## Support and platforms
+
+`palettes` is one pure-Python source tree with no runtime branches — the same
+files run everywhere. What differs is the proof, labelled here with the org's
+[platform support tiers](https://github.com/PyDevices/.github/blob/main/docs/platform-support-tiers.md):
+
+| Runtime | Tier | What backs it |
+|---|---|---|
+| CPython (desktop/server) | CI-proven | `ruff` and the unit tests run on ubuntu CPython 3.13 on every push |
+| PyScript / WebAssembly | bench-proven | The [live demo](https://palettes.readthedocs.io) on the docs site executes in the browser |
+| MicroPython | community-verified | Ships via MIP and is used by pdwidgets on the boards, but nothing in this repo proves it automatically |
+| CircuitPython | community-verified | Same source, same expectation, and the same absence of a CI job |
+
+The two community-verified rows have one cause: there is no MicroPython or
+CircuitPython job in this repo's workflow. Adding one is the cheap way to
+promote both, since the library imports nothing.
 
 ## Links & Demos
 

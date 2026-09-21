@@ -5,7 +5,7 @@
 
 Use this package when a UI or graphics routine needs a predictable set of
 colors rather than hard-coded values. The public API is small: call
-:meth:`get_palette` to create a palette, then index it to get display-ready
+[get_palette][palettes.get_palette] to create a palette, then index it to get display-ready
 colors for fills, gradients, labels, progress bars, and other visual states.
 
 A common pattern is to create one palette per display or scene and reuse it
@@ -21,8 +21,8 @@ Example:
 
 Attributes:
     WIN16: Ordered ``(0xRRGGBB, name)`` pairs for the Windows 16 colors, the
-        default name table for :class:`Palette` and
-        :class:`~palettes.wheel.WheelPalette`. A pair's position is its palette
+        default name table for [Palette][palettes.Palette] and
+        [WheelPalette][palettes.wheel.WheelPalette]. A pair's position is its palette
         index. This is a tuple rather than a dict on purpose: MicroPython and
         CircuitPython do not preserve dict insertion order, so a dict would
         give a different index order on each interpreter.
@@ -60,13 +60,13 @@ def get_palette(name="default", **kwargs):
     Args:
         name (str): Palette type. One of ``"default"`` (Windows 16-color),
             ``"wheel"``, ``"cube"``, or ``"material_design"``. Unknown names
-            fall back to :class:`Palette`.
+            fall back to [Palette][palettes.Palette].
         **kwargs (Any): Forwarded to the palette constructor (for example
             ``color_depth``, ``length``, ``size``, ``saturation``, and
             ``swapped``).
 
     Returns:
-        Palette: A :class:`Palette` subclass instance.
+        Palette: A [Palette][palettes.Palette] subclass instance.
 
     Example:
         >>> pal = get_palette(name="cube", size=3, color_depth=16)
@@ -86,7 +86,7 @@ def get_palette(name="default", **kwargs):
 class Palette:
     """Indexed color palette with optional named color attributes.
 
-    Subclasses override :meth:`_get_rgb` to define how each index maps to red,
+    Subclasses override `_get_rgb` to define how each index maps to red,
     green, and blue components. The resulting color can then be used for fills,
     gradients, status indicators, and other display operations. A subclass may
     also set ``_names`` to its own ordered sequence of ``(0xRRGGBB, name)``
@@ -98,9 +98,10 @@ class Palette:
     attached as attributes during initialization.
 
     Args:
-        name (str): Optional label stored in :attr:`name`.
-        color_depth (int): Output format for :meth:`__getitem__`: ``4`` (24-bit
-            index), ``8`` (RGB332), ``16`` (RGB565), or ``24`` (``0xRRGGBB``).
+        name (str): Optional label stored in `name`.
+        color_depth (int): Output format for `__getitem__`: `4` (the palette
+            index itself, for 4-bit indexed/grayscale framebuffers), `8`
+            (RGB332), `16` (RGB565), or `24` (`0xRRGGBB`).
         swapped (bool): If ``True``, byte-swap 16-bit colors (little-endian displays).
         cached (bool): If ``True``, memoize computed index colors in an internal dict.
     """
@@ -109,8 +110,8 @@ class Palette:
         """Create a palette from the default Windows 16-color name table.
 
         Args:
-            name (str): Optional label stored in :attr:`name`.
-            color_depth (int): Output format for :meth:`__getitem__`: ``4``, ``8``,
+            name (str): Optional label stored in `name`.
+            color_depth (int): Output format for `__getitem__`: ``4``, ``8``,
                 ``16``, or ``24``.
             swapped (bool): If ``True``, byte-swap 16-bit colors.
             cached (bool): If ``True``, memoize computed index colors.
@@ -169,11 +170,20 @@ class Palette:
         """
         index = self._normalize(index)
 
+        # At depth 4 the index *is* the value: a GS4 framebuffer stores a
+        # nibble per pixel, and the named attributes have always returned the
+        # index (see _define_named_colors). Returning packed RGB here made the
+        # two halves of the surface disagree -- and pdwidgets passes a driver's
+        # color_depth straight through, so an ssd1327 got a 24-bit value where
+        # a nibble belongs.
+        if self._color_depth == 4:
+            return index
+
         if self._cache is not None and index in self._cache:
             return self._cache[index]
 
         r, g, b = self._get_rgb(index)
-        if self._color_depth == 24 or self._color_depth == 4:
+        if self._color_depth == 24:
             return r << 16 | g << 8 | b
         elif self._color_depth == 16:
             return self.color565(r, g, b)
@@ -278,7 +288,7 @@ class Palette:
             b (int): Blue when ``r`` is passed separately.
 
         Returns:
-            str: Matching name from :attr:`_names`, or ``"#RRGGBB"`` if unknown.
+            str: Matching name from `_names`, or ``"#RRGGBB"`` if unknown.
         """
         if isinstance(r, (tuple, list)):
             r, g, b = r
@@ -318,12 +328,12 @@ class MappedPalette(Palette):
     """Palette backed by a flat RGB byte map.
 
     Each color occupies three consecutive bytes ``(r, g, b)`` in
-    ``color_map``. Subclasses such as :class:`~palettes.material_design.MDPalette`
+    ``color_map``. Subclasses such as [MDPalette][palettes.material_design.MDPalette]
     supply a pre-built map and named-color attributes.
 
     Args:
-        name (str): Optional label stored in :attr:`name`.
-        color_depth (int): Output format for :meth:`Palette.__getitem__`.
+        name (str): Optional label stored in `name`.
+        color_depth (int): Output format for `Palette.__getitem__`.
         swapped (bool): Byte-swap 16-bit colors when ``True``.
         color_map (bytes): ``bytes`` or buffer of RGB triplets, length ``3 * n_colors``.
     """
@@ -332,8 +342,8 @@ class MappedPalette(Palette):
         """Create a palette from a flat RGB byte map.
 
         Args:
-            name (str): Optional label stored in :attr:`name`.
-            color_depth (int): Output format for :meth:`Palette.__getitem__`.
+            name (str): Optional label stored in `name`.
+            color_depth (int): Output format for `Palette.__getitem__`.
             swapped (bool): Byte-swap 16-bit colors when ``True``.
             color_map (bytes): ``bytes`` or buffer of RGB triplets.
         """

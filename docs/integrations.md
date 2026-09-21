@@ -50,12 +50,18 @@ btn_cancel  = pd.Button(screen, label="Cancel", bg=md.GREY_S300, fg=md.GREY_S900
 
 ---
 
-## 3. Using with Display Drivers (`displaydev`)
+## 3. Using with Display Drivers
 
-When drawing directly to a hardware display driver (e.g. ST7789 or ILI9341):
+When drawing directly to a hardware display driver (e.g. ST7789 or ILI9341).
+
+`board_config` does not come from `palettes` and is not installable with it:
+it is a per-board file you copy onto the device from
+[pydevices/board_configs](https://github.com/PyDevices/pydevices/tree/main/board_configs),
+or that `pydevices-desktop` provides on a desktop. Everything above this
+section runs without it.
 
 ```python
-import board_config
+import board_config          # from PyDevices/pydevices, not from palettes
 from palettes import get_palette
 
 drv = board_config.display_drv

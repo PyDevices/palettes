@@ -75,12 +75,16 @@ $$R = \lfloor(R_1 + m) \times 255\rfloor, \quad G = \lfloor(G_1 + m) \times 255\
 
 ## 4. Depth Constants
 
-| Constant | Bit Depth | Bytes / Pixel | Memory (320×240) |
+These are the values `color_depth=` accepts, and what `palette[i]` gives back
+for each. Anything else raises `ValueError`.
+
+| `color_depth` | `palette[i]` returns | Bytes / Pixel | Memory (320×240) |
 |:---|:---|:---|:---|
-| `1` | 1-bit monochrome | 1/8 byte | 9.6 KB |
-| `2` | 2-bit grayscale | 1/4 byte | 19.2 KB |
-| `4` | 4-bit grayscale | 1/2 byte | 38.4 KB |
-| `8` | 8-bit grayscale | 1 byte | 76.8 KB |
-| `16` | 16-bit RGB565 | 2 bytes | 153.6 KB |
-| `24` | 24-bit RGB888 | 3 bytes | 230.4 KB |
-| `32` | 32-bit ARGB8888 | 4 bytes | 307.2 KB |
+| `4` | the palette index, for a 4-bit indexed or grayscale framebuffer | 1/2 byte | 38.4 KB |
+| `8` | RGB332 | 1 byte | 76.8 KB |
+| `16` | RGB565 (byte-swapped when `swapped=True`) | 2 bytes | 153.6 KB |
+| `24` | `0xRRGGBB` | 3 bytes | 230.4 KB |
+
+`1`, `2` and `32` are **not supported** — a 1- or 2-bit framebuffer needs no
+palette lookup, and nothing here produces an alpha channel. They used to be
+listed here and they always raised.

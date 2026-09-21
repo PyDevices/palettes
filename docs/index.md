@@ -7,7 +7,7 @@
     <span class="badge badge-orange">📦 MIP: palettes</span>
     <span class="badge badge-orange">🐍 PyPI: pydevices-palettes</span>
     <span class="badge badge-green">⚡ Zero C Dependencies</span>
-    <span class="badge">🌐 MicroPython · CircuitPython · CPython · Direct WebAssembly · Pyodide</span>
+    <span class="badge">🌐 CPython · WebAssembly · MicroPython · CircuitPython</span>
   </div>
 </div>
 
@@ -67,6 +67,21 @@
     The wheel is named `pydevices-palettes`; the module you import is
     `palettes`. On MicroPython the MIP package name is `palettes`
     (`mip.install("palettes", index="https://PyDevices.github.io/mip")`).
+
+=== "From source"
+
+    ```bash
+    git clone https://github.com/PyDevices/palettes && cd palettes
+    pip install -e .                                  # or just PYTHONPATH=lib
+    PYTHONPATH=lib python3 -m unittest discover -s tests
+    ruff check lib tests scripts
+    ```
+
+    The last two are what CI runs.
+
+`pydevices-palettes` is also parked on production PyPI, one release behind, so
+a plain `pip install pydevices-palettes` succeeds and gives you the older one.
+TestPyPI is the current channel.
 
 ---
 
