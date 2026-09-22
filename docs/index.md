@@ -189,6 +189,6 @@ Explore full-color gradient and animation applications built with `palettes`:
 ## 📚 Documentation Map
 
 * 🎨 [**Palette Gallery**](palette-gallery.md) — Visual previews and tables for Wheel, Material Design, Cube, and Win16 palettes.
-* 🔢 [**Color Math & Formats**](color-math.md) — RGB565 bit-packing, endianness swapping, and HSL/HSV math.
+* 🔢 [**Color Math & Formats**](color-math.md) — RGB565 bit-packing, endianness swapping, and HSV math.
 * 🧩 [**Integrations**](integrations.md) — Recipes for `pygraphics`, `pdwidgets`, and hardware display drivers.
 * 📚 [**API Reference**](reference/palettes/index.md) — Complete docstrings and class references.
