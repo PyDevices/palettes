@@ -1,8 +1,8 @@
 """Freeze the palettes package from its canonical source tree.
 
-Discovered automatically by a workspace's aggregator manifests
-(``manifest-micropython.py`` / ``manifest-circuitpython.py``), which include
-``<repo>/manifest.py`` for every sibling checked out beside it.
+A firmware build that wants palettes frozen includes this file from its own
+freeze manifest -- for example micropython-pydevices'
+``manifests/pygraphics.py``, which includes ``../../palettes/manifest.py``.
 """
 
 if 0:
