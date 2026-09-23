@@ -146,6 +146,10 @@ Those last two are what CI runs, so they cannot drift silently.
 
 Full options: [docs/index.md](docs/index.md).
 
+New to the implementation? [Read the newcomer’s guide](docs/newcomers.md) for
+the repository map, palette lookup path, compatibility contracts, and safe
+places to start contributing.
+
 ## Support and platforms
 
 `palettes` is one pure-Python source tree with no runtime branches — the same
@@ -173,4 +177,3 @@ promote both, since the library imports nothing.
 ## License
 
 MIT — see [LICENSE](LICENSE).
-

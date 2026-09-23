@@ -1,4 +1,5 @@
 * [Home](index.md)
+* [Newcomer's Guide](newcomers.md)
 * [Palette Gallery](palette-gallery.md)
 * [Color Math & Formats](color-math.md)
 * [Integrations](integrations.md)
