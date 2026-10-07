@@ -167,6 +167,8 @@ The two community-verified rows have one cause: there is no MicroPython or
 CircuitPython job in this repo's workflow. Adding one is the cheap way to
 promote both, since the library imports nothing.
 
+What's planned next is in [ROADMAP.md](ROADMAP.md).
+
 ## Links & Demos
 
 - [Documentation](https://palettes.readthedocs.io)
